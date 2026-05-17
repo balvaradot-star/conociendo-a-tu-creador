@@ -181,7 +181,7 @@
                     <div class="relative w-44 h-44 mx-auto flex items-center justify-center">
                         <div class="absolute inset-0 rounded-full border-2 border-dashed border-imperial-gold/30 animate-[spin_10s_linear_infinite]"></div>
                         
-                        <!-- Imagen Real del Orador (Optimizado: busca primero 'orador.jpg' y luego el nombre largo original como fallback) -->
+                        <!-- Imagen Real del Orador (Se agregó 'object-top' para centrar el rostro de la foto vertical) -->
                         <img src="orador.jpg" 
                              id="orador-img"
                              onerror="this.src='WhatsApp%20Image%202026-05-15%20at%2014.54.09.jpeg'; this.onerror=() => { this.src='WhatsApp Image 2026-05-15 at 14.54.09.jpeg'; this.onerror=() => { this.classList.add('hidden'); document.getElementById('orador-fallback').classList.remove('hidden'); } }" 
@@ -391,8 +391,8 @@
 
         // --- 2. GESTIÓN DEL FORMULARIO Y DESTINO DE DATOS ---
         // CONFIGURACIÓN DE ENVÍO DE DATOS (Formspree):
-        // Se ha enlazado con éxito tu identificador de Formspree: xjgzvkky
-        const FORMSPREE_ID = "xjgzvkky"; 
+        // Se ha enlazado con éxito tu identificador de Formspree: mykvyzwp
+        const FORMSPREE_ID = "mykvyzwp"; 
 
         const handleFormSubmit = (event) => {
             event.preventDefault();
