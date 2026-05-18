@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Conociendo a tu Creador — Gran Campaña Evangelística</title>
+    <title>Distrito Chapinero — Conociendo a tu Creador</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -55,314 +55,500 @@
         }
     </style>
 </head>
-<body class="bg-imperial-dark text-slate-100 font-sans antialiased selection:bg-imperial-gold selection:text-imperial-dark">
+<body class="bg-imperial-dark text-slate-100 font-sans antialiased selection:bg-imperial-gold selection:text-imperial-dark min-h-screen flex flex-col justify-between">
 
-    <!-- PORTADA PRINCIPAL (HERO) -->
-    <header class="relative min-h-[90vh] flex flex-col justify-center items-center px-4 py-20 text-center overflow-hidden">
-        <!-- Fondo con superposición de gradiente cinematográfico -->
-        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-25" 
-             style="background-image: url('https://images.unsplash.com/photo-1507692049790-de58290a4334?q=80&w=1200');">
-        </div>
-        <div class="absolute inset-0 z-0 bg-gradient-to-b from-imperial-blue/40 via-imperial-dark/95 to-imperial-dark"></div>
-
-        <div class="relative z-10 max-w-3xl mx-auto space-y-6">
-            <span class="inline-block px-4 py-1.5 rounded-full border border-imperial-gold/30 bg-imperial-gold/10 text-imperial-gold text-xs font-black uppercase tracking-[0.3em] text-glow-gold animate-pulse">
-                Gran Campaña Evangelística
-            </span>
+    <!-- BARRA DE NAVEGACIÓN FLUIDA -->
+    <nav class="sticky top-0 z-50 glass border-b border-white/5 py-4 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('inicio')">
+                <div class="w-10 h-10 bg-imperial-gold rounded-full flex items-center justify-center text-imperial-dark font-black">
+                    <i class="fa-solid fa-church"></i>
+                </div>
+                <div>
+                    <span class="font-serif font-black text-sm tracking-widest text-glow-gold text-imperial-gold block leading-none">DISTRITO CHAPINERO</span>
+                    <span class="text-[9px] uppercase tracking-[0.2em] text-slate-400">Cartelera e Iglesia Digital</span>
+                </div>
+            </div>
             
-            <h1 class="font-serif text-4xl sm:text-6xl font-black text-white leading-none tracking-tight uppercase">
-                CONOCIENDO A TU <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-imperial-gold to-yellow-500">CREADOR</span>
-            </h1>
-            
-            <p class="text-slate-300 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-                Un tiempo especial reservado para encontrarte con Dios, fortalecer tu fe y entender el propósito eterno diseñado especialmente para tu vida. ¡La entrada es libre!
-            </p>
-            
-            <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
-                <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-sm">
-                    <i class="fa-solid fa-microphone text-imperial-gold animate-bounce"></i>
-                    <span>Orador: <strong class="text-white">Carlos Arredondo</strong> (EE. UU.)</span>
-                </div>
-            </div>
-
-            <!-- REGRESO A TIEMPO (COUNTDOWN) -->
-            <div class="pt-8">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-3">La campaña inicia el 13 de Junio en:</p>
-                <div class="flex justify-center gap-4 text-center">
-                    <div class="glass p-3 rounded-2xl w-16 sm:w-20">
-                        <span id="days" class="block text-xl sm:text-2xl font-black text-imperial-gold">00</span>
-                        <span class="text-[8px] uppercase tracking-wider text-slate-400">Días</span>
-                    </div>
-                    <div class="glass p-3 rounded-2xl w-16 sm:w-20">
-                        <span id="hours" class="block text-xl sm:text-2xl font-black text-imperial-gold">00</span>
-                        <span class="text-[8px] uppercase tracking-wider text-slate-400">Horas</span>
-                    </div>
-                    <div class="glass p-3 rounded-2xl w-16 sm:w-20">
-                        <span id="minutes" class="block text-xl sm:text-2xl font-black text-imperial-gold">00</span>
-                        <span class="text-[8px] uppercase tracking-wider text-slate-400">Minutos</span>
-                    </div>
-                    <div class="glass p-3 rounded-2xl w-16 sm:w-20">
-                        <span id="seconds" class="block text-xl sm:text-2xl font-black text-imperial-gold">00</span>
-                        <span class="text-[8px] uppercase tracking-wider text-slate-400">Segundos</span>
-                    </div>
-                </div>
+            <div class="flex flex-wrap gap-2 md:gap-4 justify-center">
+                <button onclick="switchView('inicio')" id="nav-inicio" class="px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black text-imperial-gold bg-white/5 border border-imperial-gold/20 transition-all">
+                    Inicio / Tabloide
+                </button>
+                <button onclick="switchView('campana')" id="nav-campana" class="px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black text-slate-400 hover:text-imperial-gold hover:bg-white/5 transition-all">
+                    La Campaña
+                </button>
+                <button onclick="switchView('predicacion')" id="nav-predicacion" class="px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black text-slate-400 hover:text-imperial-gold hover:bg-white/5 transition-all">
+                    Predicaciones
+                </button>
+                <button onclick="switchView('peticiones')" id="nav-peticiones" class="px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black text-slate-400 hover:text-imperial-gold hover:bg-white/5 transition-all">
+                    Oración
+                </button>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- SECCIÓN DE ALTO IMPACTO: LO QUE VIVIRÁS ESTA SEMANA -->
-    <section class="max-w-6xl mx-auto px-6 py-12">
-        <div class="text-center space-y-2 mb-12">
-            <h2 class="font-serif text-3xl font-bold tracking-wide uppercase">Una Experiencia Celestial</h2>
-            <p class="text-xs text-slate-500 uppercase tracking-widest font-sans">Lo que vivirás durante esta gran semana de bendición</p>
-            <div class="h-1 w-16 bg-imperial-gold mx-auto rounded-full"></div>
-        </div>
+    <!-- ÁREA DE VISTAS DINÁMICAS -->
+    <div class="flex-1">
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Música y Alabanza -->
-            <div class="glass p-6 rounded-3xl border border-white/5 hover:border-imperial-gold/30 transition-all duration-300 group text-center space-y-4">
-                <div class="w-14 h-14 bg-gradient-to-br from-yellow-500/10 to-amber-500/20 rounded-2xl flex items-center justify-center border border-imperial-gold/20 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <i class="fa-solid fa-guitar text-imperial-gold text-2xl"></i>
-                </div>
-                <h3 class="font-serif text-lg font-bold text-white tracking-wide">MÚSICA & ADORACIÓN</h3>
-                <p class="text-xs text-slate-400 leading-relaxed font-sans">
-                    Disfruta de música en vivo y tiempos solemnes de alabanza que conectarán tu espíritu de forma íntima y poderosa con el Trono de Dios.
-                </p>
-            </div>
-
-            <!-- Estudio de la Palabra -->
-            <div class="glass p-6 rounded-3xl border border-white/5 hover:border-imperial-gold/30 transition-all duration-300 group text-center space-y-4">
-                <div class="w-14 h-14 bg-gradient-to-br from-yellow-500/10 to-amber-500/20 rounded-2xl flex items-center justify-center border border-imperial-gold/20 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <i class="fa-solid fa-book-open text-imperial-gold text-2xl"></i>
-                </div>
-                <h3 class="font-serif text-lg font-bold text-white tracking-wide">ESTUDIO PROFUNDO</h3>
-                <p class="text-xs text-slate-400 leading-relaxed font-sans">
-                    Escudriña las Sagradas Escrituras a través de enseñanzas claras y reveladoras dirigidas a restaurar tu vida y la de tu familia.
-                </p>
-            </div>
-
-            <!-- Testimonios de Fe -->
-            <div class="glass p-6 rounded-3xl border border-white/5 hover:border-imperial-gold/30 transition-all duration-300 group text-center space-y-4">
-                <div class="w-14 h-14 bg-gradient-to-br from-yellow-500/10 to-amber-500/20 rounded-2xl flex items-center justify-center border border-imperial-gold/20 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <i class="fa-solid fa-heart-crack text-imperial-gold text-2xl"></i>
-                </div>
-                <h3 class="font-serif text-lg font-bold text-white tracking-wide">TESTIMONIOS REALES</h3>
-                <p class="text-xs text-slate-400 leading-relaxed font-sans">
-                    Déjate conmover y edificar por relatos impactantes de milagros, sanidad y vidas rescatadas de la oscuridad por el amor del Creador.
-                </p>
-            </div>
-
-            <!-- Y mucho más -->
-            <div class="glass p-6 rounded-3xl border border-white/5 hover:border-imperial-gold/30 transition-all duration-300 group text-center space-y-4">
-                <div class="w-14 h-14 bg-gradient-to-br from-yellow-500/10 to-amber-500/20 rounded-2xl flex items-center justify-center border border-imperial-gold/20 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <i class="fa-solid fa-star-of-david text-imperial-gold text-2xl animate-spin-slow"></i>
-                </div>
-                <h3 class="font-serif text-lg font-bold text-white tracking-wide">MUCHO MÁS</h3>
-                <p class="text-xs text-slate-400 leading-relaxed font-sans">
-                    Jornadas de oración especial, bendición de familias, entrega de recursos y momentos de fraternidad que marcarán un antes y un después en tu vida.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- DETALLES Y CONTENIDO -->
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
-        
-        <div class="text-center space-y-2">
-            <h2 class="font-serif text-3xl font-bold tracking-wide uppercase">Detalles e Itinerario</h2>
-            <div class="h-1 w-16 bg-imperial-gold mx-auto rounded-full"></div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <!-- TARJETA DEL ORADOR (5 COLS) -->
-            <section class="lg:col-span-5 bg-gradient-to-b from-slate-900 to-slate-950 border border-white/5 rounded-[2.5rem] p-8 text-center flex flex-col items-center justify-between">
-                <div class="space-y-6 w-full">
-                    <div class="relative w-44 h-44 mx-auto flex items-center justify-center">
-                        <div class="absolute inset-0 rounded-full border-2 border-dashed border-imperial-gold/30 animate-[spin_10s_linear_infinite]"></div>
-                        
-                        <!-- Imagen Real del Orador (Se agregó 'object-top' para centrar el rostro de la foto vertical) -->
-                        <img src="orador.jpg" 
-                             id="orador-img"
-                             onerror="this.src='WhatsApp%20Image%202026-05-15%20at%2014.54.09.jpeg'; this.onerror=() => { this.src='WhatsApp Image 2026-05-15 at 14.54.09.jpeg'; this.onerror=() => { this.classList.add('hidden'); document.getElementById('orador-fallback').classList.remove('hidden'); } }" 
-                             alt="Carlos Arredondo" 
-                             class="absolute inset-2 w-40 h-40 rounded-full object-cover object-top border-4 border-imperial-dark bg-slate-800 z-10">
-                        
-                        <!-- Fallback Imperial de Respaldo (CA) si la imagen no se encuentra -->
-                        <div id="orador-fallback" class="hidden absolute inset-2 w-40 h-40 rounded-full border-4 border-imperial-dark bg-[#0f172a] flex items-center justify-center">
-                            <span class="font-serif text-3xl font-black tracking-widest text-imperial-gold text-glow-gold">CA</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-white font-serif">Carlos Arredondo</h3>
-                        <p class="text-xs uppercase tracking-widest text-imperial-gold font-semibold mt-1">Evangelista Internacional</p>
-                    </div>
-                    <p class="text-sm text-slate-400 leading-relaxed font-light">
-                        Nos acompaña desde los Estados Unidos para impartir conferencias de restauración familiar, sanidad y fe basadas en verdades bíblicas absolutas. Una voz de esperanza dedicada a la transformación espiritual.
+        <!-- VISTA 1: INICIO (TABLOIDE DE ANUNCIOS) -->
+        <div id="view-inicio" class="max-w-6xl mx-auto px-6 py-12 space-y-12 animate-fade-in">
+            <!-- ANUNCIO DE ALTO IMPACTO (HIGHTLIGHT) -->
+            <div class="relative bg-gradient-to-r from-imperial-blue/40 via-slate-900 to-imperial-dark p-8 md:p-12 rounded-[2.5rem] border border-imperial-gold/20 overflow-hidden group shadow-2xl flex flex-col md:flex-row items-center gap-8">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-imperial-gold/5 blur-3xl rounded-full"></div>
+                <div class="relative z-10 flex-1 space-y-4">
+                    <span class="inline-block px-3 py-1 rounded-full border border-imperial-gold/30 bg-imperial-gold/10 text-imperial-gold text-[9px] font-black uppercase tracking-[0.3em] text-glow-gold animate-pulse">
+                        ANUNCIO PRINCIPAL RECOMENDADO
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-black text-white leading-none">CONOCIENDO A TU <span class="text-transparent bg-clip-text bg-gradient-to-r from-imperial-gold to-yellow-500">CREADOR</span></h2>
+                    <p class="text-sm text-slate-300 font-light max-w-xl">
+                        Acompáñanos en una semana de bendición inolvidable con conferencias diarias del Pr. Carlos Arredondo (EE. UU.). ¡Alabanza, palabra de Dios y milagros!
                     </p>
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <!-- Ajuste en el texto del botón: de 'Ver Detalles & Oración' a 'Ver Detalles' -->
+                        <button onclick="switchView('campana')" class="bg-imperial-gold hover:bg-yellow-400 text-imperial-dark font-black text-[10px] tracking-widest uppercase px-6 py-3 rounded-xl transition-all shadow-lg shadow-imperial-gold/10">
+                            Ver Detalles
+                        </button>
+                        <div class="flex items-center gap-2 text-xs text-slate-400 font-semibold px-4 py-2 border border-white/10 rounded-xl bg-white/5">
+                            <i class="fa-solid fa-calendar text-imperial-gold"></i>
+                            <span>Inicia: 13 de Junio</span>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="w-full pt-6 border-t border-white/5 mt-6">
-                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold block mb-1">Organiza</span>
-                    <p class="text-xs text-imperial-gold font-sans font-bold uppercase tracking-wider">Distrito Chapinero</p>
+                <div class="w-full md:w-1/3 flex flex-col items-center justify-center relative z-10 p-6 glass border border-white/5 rounded-3xl text-center">
+                    <p class="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 mb-2">Comienza en:</p>
+                    <!-- Mini contador -->
+                    <div class="flex gap-2 justify-center">
+                        <div class="bg-black/40 p-2.5 rounded-xl border border-white/5 w-12 text-center">
+                            <span id="days-mini" class="block text-sm font-black text-imperial-gold">00</span>
+                            <span class="text-[7px] text-slate-500 uppercase tracking-tighter">Días</span>
+                        </div>
+                        <div class="bg-black/40 p-2.5 rounded-xl border border-white/5 w-12 text-center">
+                            <span id="hours-mini" class="block text-sm font-black text-imperial-gold">00</span>
+                            <span class="text-[7px] text-slate-500 uppercase tracking-tighter">Hrs</span>
+                        </div>
+                        <div class="bg-black/40 p-2.5 rounded-xl border border-white/5 w-12 text-center">
+                            <span id="mins-mini" class="block text-sm font-black text-imperial-gold">00</span>
+                            <span class="text-[7px] text-slate-500 uppercase tracking-tighter">Min</span>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- DETALLES DEL EVENTO E ITINERARIO (7 COLS) -->
-            <section class="lg:col-span-7 bg-[#0b0f19] border border-white/5 rounded-[2.5rem] p-8 md:p-10 space-y-8">
-                
-                <!-- Cronograma de Campañas -->
-                <div class="space-y-6">
-                    <h3 class="text-lg font-bold text-white border-b border-white/5 pb-2 uppercase tracking-wider font-serif">Cronograma Oficial</h3>
+            <!-- TABLOIDE DE ANUNCIOS DISTRITALES -->
+            <div class="space-y-6">
+                <div class="text-center md:text-left space-y-1">
+                    <h3 class="font-serif text-2xl font-bold tracking-wide uppercase">Cartelera Distrital</h3>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest">Actividades y fechas especiales organizadas para ti</p>
+                    <div class="h-0.5 w-16 bg-imperial-gold rounded-full md:mx-0 mx-auto"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Tarjeta: Campamiento Conquistadores -->
+                    <div class="glass p-6 rounded-[2rem] border border-white/5 space-y-4 hover:border-imperial-gold/20 transition-all group relative overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-7xl opacity-5 text-emerald-500"><i class="fa-solid fa-tree"></i></div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                <i class="fa-solid fa-campground text-lg"></i>
+                            </div>
+                            <span class="text-[9px] font-black text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full uppercase tracking-widest">Aventura</span>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-white uppercase tracking-wider">Campamento de Conquistadores</h4>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                                Un fin de semana de aventura espiritual y desarrollo de habilidades en la naturaleza. ¡Prepárate para marchar!
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-white/5 flex justify-between items-center text-xs">
+                            <span class="text-slate-500">Fecha oficial:</span>
+                            <span class="font-bold text-emerald-400 uppercase tracking-wider">26 al 29 de junio</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta: Santas Cenas -->
+                    <div class="glass p-6 rounded-[2rem] border border-white/5 space-y-4 hover:border-imperial-gold/20 transition-all group relative overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-7xl opacity-5 text-purple-500"><i class="fa-solid fa-wine-glass"></i></div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-wine-bottle text-lg"></i>
+                            </div>
+                            <span class="text-[9px] font-black text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-full uppercase tracking-widest">Solemne</span>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-white uppercase tracking-wider">Santas Cenas Distritales</h4>
+                            <div class="space-y-2 mt-3">
+                                <div class="flex justify-between items-center text-xs border-b border-white/5 pb-1">
+                                    <span class="text-slate-400">Iglesia Modelia</span>
+                                    <span class="font-bold text-purple-400">20 de Junio</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs border-b border-white/5 pb-1">
+                                    <span class="text-slate-400">Filadelfia y El Camino</span>
+                                    <span class="font-bold text-purple-400">3 de Julio</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-slate-400">San Miguel</span>
+                                    <span class="font-bold text-purple-400">27 de Junio</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta: Cultos de Miércoles -->
+                    <div class="glass p-6 rounded-[2rem] border border-white/5 space-y-4 hover:border-imperial-gold/20 transition-all group relative overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-7xl opacity-5 text-blue-500"><i class="fa-solid fa-laptop"></i></div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                                <i class="fa-solid fa-circle-play text-lg"></i>
+                            </div>
+                            <span class="text-[9px] font-black text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-full uppercase tracking-widest">Encuentros</span>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-white uppercase tracking-wider">Miércoles: Encuentros con Jesús</h4>
+                            <div class="space-y-2 mt-3">
+                                <div class="flex justify-between items-center text-xs border-b border-white/5 pb-1">
+                                    <span class="text-slate-400">Filadelfia (Presencial)</span>
+                                    <span class="font-semibold text-white">7:00 P.M.</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs border-b border-white/5 pb-1">
+                                    <span class="text-slate-400">Modelia (Presencial)</span>
+                                    <span class="font-semibold text-white">7:00 P.M.</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-slate-400">San Miguel y El Camino</span>
+                                    <span class="font-bold text-blue-400">Virtual (7:00 P.M.)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta: Juntas de Iglesia -->
+                    <div class="glass p-6 rounded-[2rem] border border-white/5 space-y-4 hover:border-imperial-gold/20 transition-all group relative overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-7xl opacity-5 text-imperial-gold"><i class="fa-solid fa-users"></i></div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-xl bg-imperial-gold/10 border border-imperial-gold/20 flex items-center justify-center text-imperial-gold">
+                                <i class="fa-solid fa-calendar-check text-lg"></i>
+                            </div>
+                            <span class="text-[9px] font-black text-imperial-gold bg-imperial-gold/10 px-2.5 py-1 rounded-full uppercase tracking-widest">Juntas</span>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-white uppercase tracking-wider">Juntas de Iglesia Mensuales</h4>
+                            <div class="space-y-1 mt-3">
+                                <p class="text-xs text-slate-300">🏢 <span class="font-bold">Modelia:</span> Primer Sábado</p>
+                                <p class="text-xs text-slate-300">🏢 <span class="font-bold">San Miguel:</span> Segundo Sábado</p>
+                                <p class="text-xs text-slate-300">🏢 <span class="font-bold">Filadelfia:</span> Tercer Sábado</p>
+                                <p class="text-xs text-slate-300">🏢 <span class="font-bold">El Camino:</span> Cuarto Sábado</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta: Estudio Bíblico Zoom -->
+                    <div class="glass p-6 rounded-[2rem] border border-white/5 space-y-4 hover:border-imperial-gold/20 transition-all group relative overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-7xl opacity-5 text-blue-500"><i class="fa-solid fa-video"></i></div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                                <i class="fa-solid fa-graduation-cap text-lg"></i>
+                            </div>
+                            <span class="text-[9px] font-black text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-full uppercase tracking-widest">Estudio</span>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-white uppercase tracking-wider">Grupo de Estudio Bíblico</h4>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                                Profundiza en las profecías y la sana doctrina cada inicio de semana en comunidad de oración y aprendizaje.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-white/5 flex justify-between items-center text-xs">
+                            <span class="text-slate-500">Lunes por Zoom:</span>
+                            <span class="font-bold text-blue-400">7:30 P.M.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTA 2: LA CAMPAÑA (CONOCIENDO A TU CREADOR) -->
+        <div id="view-campana" class="hidden max-w-6xl mx-auto px-6 py-12 space-y-16 animate-fade-in">
+            <div class="text-center space-y-2">
+                <span class="inline-block px-4 py-1.5 rounded-full border border-imperial-gold/30 bg-imperial-gold/10 text-imperial-gold text-xs font-black uppercase tracking-[0.3em] text-glow-gold animate-pulse">
+                    La Gran Campaña Evangelística
+                </span>
+                <h2 class="font-serif text-3xl font-bold tracking-wide uppercase">Detalles e Itinerario</h2>
+                <div class="h-1 w-16 bg-imperial-gold mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- TARJETA DEL ORADOR (5 COLS) -->
+                <section class="lg:col-span-5 bg-gradient-to-b from-slate-900 to-slate-950 border border-white/5 rounded-[2.5rem] p-8 text-center flex flex-col items-center justify-between">
+                    <div class="space-y-6 w-full">
+                        <div class="relative w-44 h-44 mx-auto flex items-center justify-center">
+                            <div class="absolute inset-0 rounded-full border-2 border-dashed border-imperial-gold/30 animate-[spin_10s_linear_infinite]"></div>
+                            
+                            <!-- Imagen Real del Orador (Se agregó 'object-top' para centrar el rostro de la foto vertical) -->
+                            <img src="orador.jpg" 
+                                 id="orador-img"
+                                 onerror="this.src='WhatsApp%20Image%202026-05-15%20at%2014.54.09.jpeg'; this.onerror=() => { this.src='WhatsApp Image 2026-05-15 at 14.54.09.jpeg'; this.onerror=() => { this.classList.add('hidden'); document.getElementById('orador-fallback').classList.remove('hidden'); } }" 
+                                 alt="Carlos Arredondo" 
+                                 class="absolute inset-2 w-40 h-40 rounded-full object-cover object-top border-4 border-imperial-dark bg-slate-800 z-10 animate-fade-in">
+                            
+                            <!-- Fallback Imperial de Respaldo (CA) si la imagen no se encuentra -->
+                            <div id="orador-fallback" class="hidden absolute inset-2 w-40 h-40 rounded-full border-4 border-imperial-dark bg-[#0f172a] flex items-center justify-center">
+                                <span class="font-serif text-3xl font-black tracking-widest text-imperial-gold text-glow-gold">CA</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white font-serif">Carlos Arredondo</h3>
+                            <p class="text-xs uppercase tracking-widest text-imperial-gold font-semibold mt-1">Evangelista Internacional</p>
+                        </div>
+                        <p class="text-sm text-slate-400 leading-relaxed font-light">
+                            Nos acompaña desde los Estados Unidos para compartir conferencias de restauración familiar, sanidad y fe basadas en verdades bíblicas absolutas. Una voz dedicada a la transformación espiritual.
+                        </p>
+                    </div>
                     
-                    <div class="space-y-4">
-                        <!-- Ubicación 1 -->
-                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex gap-4 items-start">
-                            <span class="text-2xl mt-1">⛪</span>
-                            <div>
-                                <h4 class="text-sm font-bold text-imperial-gold font-sans">Iglesia Adventista Modelia</h4>
-                                <p class="text-xs text-slate-400 font-sans">Del 13 al 16 de Junio</p>
-                                <p class="text-xs text-slate-500 mt-1 font-sans">Conferencias de renovación espiritual.</p>
-                            </div>
-                        </div>
+                    <div class="w-full pt-6 border-t border-white/5 mt-6">
+                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold block mb-1">Organiza</span>
+                        <p class="text-xs text-imperial-gold font-sans font-bold uppercase tracking-wider">Distrito Chapinero</p>
+                    </div>
+                </section>
 
-                        <!-- Ubicación 2 -->
-                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex gap-4 items-start">
-                            <span class="text-2xl mt-1">💒</span>
-                            <div>
-                                <h4 class="text-sm font-bold text-imperial-gold font-sans">Iglesia de Filadelfia</h4>
-                                <p class="text-xs text-slate-400 font-sans">Del 14 al 20 de Junio</p>
-                                <p class="text-xs text-slate-500 mt-1 font-sans">Jornadas extendidas de comunión y alabanza.</p>
+                <!-- DETALLES DEL EVENTO E ITINERARIO (7 COLS) -->
+                <section class="lg:col-span-7 bg-[#0b0f19] border border-white/5 rounded-[2.5rem] p-8 md:p-10 space-y-8">
+                    
+                    <!-- Cronograma de Campañas -->
+                    <div class="space-y-6">
+                        <h3 class="text-lg font-bold text-white border-b border-white/5 pb-2 uppercase tracking-wider font-serif">Cronograma Oficial</h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Ubicación 1 -->
+                            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex gap-4 items-start">
+                                <span class="text-2xl mt-1">⛪</span>
+                                <div>
+                                    <h4 class="text-sm font-bold text-imperial-gold font-sans">Iglesia Adventista Modelia</h4>
+                                    <p class="text-xs text-slate-400 font-sans">Del 13 al 16 de Junio</p>
+                                    <p class="text-xs text-slate-500 mt-1 font-sans">Conferencias de renovación espiritual.</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Ubicación 3 (Gran Concentración) -->
-                        <div class="p-4 rounded-2xl bg-imperial-gold/5 border border-imperial-gold/20 flex gap-4 items-start relative overflow-hidden">
-                            <div class="absolute -right-6 -bottom-6 text-6xl opacity-5 text-imperial-gold">🔥</div>
-                            <span class="text-2xl mt-1">🔥</span>
-                            <div>
-                                <h4 class="text-sm font-bold text-white flex items-center gap-2 font-sans">
-                                    Gran Concentración <span class="bg-imperial-gold text-imperial-dark px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-wider font-sans">Magno Evento</span>
-                                </h4>
-                                <p class="text-xs text-slate-300 font-semibold font-sans">Iglesias unidas: Filadelfia, San Miguel y El Camino</p>
-                                <p class="text-xs text-slate-400 font-sans">Del 14 al 20 de Junio</p>
-                                <p class="text-xs text-imperial-gold font-semibold mt-1 font-sans">Sede de reunión: Iglesia de Filadelfia</p>
+                            <!-- Ubicación 2 -->
+                            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex gap-4 items-start">
+                                <span class="text-2xl mt-1">💒</span>
+                                <div>
+                                    <h4 class="text-sm font-bold text-imperial-gold font-sans">Iglesia de Filadelfia</h4>
+                                    <p class="text-xs text-slate-400 font-sans">Del 14 al 20 de Junio</p>
+                                    <p class="text-xs text-slate-500 mt-1 font-sans">Jornadas extendidas de comunión y alabanza.</p>
+                                </div>
+                            </div>
+
+                            <!-- Ubicación 3 (Gran Concentración) -->
+                            <div class="p-4 rounded-2xl bg-imperial-gold/5 border border-imperial-gold/20 flex gap-4 items-start relative overflow-hidden">
+                                <div class="absolute -right-6 -bottom-6 text-6xl opacity-5 text-imperial-gold">🔥</div>
+                                <span class="text-2xl mt-1">🔥</span>
+                                <div>
+                                    <h4 class="text-sm font-bold text-white flex items-center gap-2 font-sans">
+                                        Gran Concentración <span class="bg-imperial-gold text-imperial-dark px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-wider font-sans">Magno Evento</span>
+                                    </h4>
+                                    <p class="text-xs text-slate-300 font-semibold font-sans">Iglesias unidas: Filadelfia, San Miguel y El Camino</p>
+                                    <p class="text-xs text-slate-400 font-sans">Del 14 al 20 de Junio</p>
+                                    <p class="text-xs text-imperial-gold font-semibold mt-1 font-sans">Sede de reunión: Iglesia de Filadelfia</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Detalles Generales -->
-                <div class="pt-4 space-y-4">
-                    <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 font-sans">Datos Adicionales</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-clock text-imperial-gold text-lg shrink-0"></i>
-                            <span class="text-xs text-slate-300 font-sans">Hora: <strong>7:00 PM</strong> cada noche</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-ticket text-imperial-gold text-lg shrink-0"></i>
-                            <span class="text-xs text-slate-300 font-sans">Entrada: <strong>Libre y Gratuita</strong></span>
+                    <!-- Detalles Generales -->
+                    <div class="pt-4 space-y-4">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 font-sans">Datos Adicionales</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-clock text-imperial-gold text-lg shrink-0"></i>
+                                <span class="text-xs text-slate-300 font-sans">Hora: <strong>7:00 PM</strong> cada noche</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-ticket text-imperial-gold text-lg shrink-0"></i>
+                                <span class="text-xs text-slate-300 font-sans">Entrada: <strong>Libre y Gratuita</strong></span>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Botón de Ubicación en el mapa -->
+                    <div class="pt-4">
+                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 bg-imperial-gold text-imperial-dark font-black text-[10px] tracking-widest uppercase px-6 py-3 rounded-xl hover:bg-yellow-400 transition-all shadow-lg shadow-imperial-gold/10 w-full justify-center sm:w-auto font-sans">
+                            <i class="fa-solid fa-map-location-dot"></i> Obtener Ruta en Google Maps
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+            <!-- SECCIÓN DE PREGUNTAS FRECUENTES (FAQ INTERACTIVO) -->
+            <section class="space-y-6">
+                <div class="text-center space-y-2">
+                    <h3 class="font-serif text-2xl font-bold">PREGUNTAS FRECUENTES</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest font-sans">Todo lo que necesitas saber</p>
                 </div>
 
-                <!-- Botón de Ubicación en el mapa -->
-                <div class="pt-4">
-                    <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 bg-imperial-gold text-imperial-dark font-black text-[10px] tracking-widest uppercase px-6 py-3 rounded-xl hover:bg-yellow-400 transition-all shadow-lg shadow-imperial-gold/10 w-full justify-center sm:w-auto font-sans">
-                        <i class="fa-solid fa-map-location-dot"></i> Obtener Ruta en Google Maps
-                    </a>
+                <div class="max-w-3xl mx-auto space-y-3">
+                    <div class="bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer" onclick="toggleFaq(this)">
+                        <button class="w-full p-5 flex justify-between items-center text-left pointer-events-none font-sans">
+                            <span class="text-sm font-bold text-white">¿Puedo llevar personas que no asisten a ninguna iglesia?</span>
+                            <i class="fa-solid fa-chevron-down text-imperial-gold text-xs faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content bg-black/20">
+                            <p class="p-5 pt-0 text-xs text-slate-400 leading-relaxed font-sans">
+                                ¡Por supuesto! El evento está diseñado especialmente para personas que buscan respuestas espirituales, sanidad interior and un nuevo comienzo con Dios. Todos son bienvenidos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer" onclick="toggleFaq(this)">
+                        <button class="w-full p-5 flex justify-between items-center text-left pointer-events-none font-sans">
+                            <span class="text-sm font-bold text-white">¿Hay algún costo por asistir?</span>
+                            <i class="fa-solid fa-chevron-down text-imperial-gold text-xs faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content bg-black/20">
+                            <p class="p-5 pt-0 text-xs text-slate-400 leading-relaxed font-sans">
+                                No, la entrada es 100% gratuita durante todos los días de la campaña.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
 
-        <!-- SECCIÓN INTERACTIVA: REGISTRO Y PETICIÓN DE ORACIÓN -->
-        <section id="peticiones" class="bg-gradient-to-br from-slate-900 to-[#0b0f19] border border-white/5 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
-            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-imperial-gold/5 blur-3xl rounded-full"></div>
-            
-            <div class="relative z-10 max-w-2xl mx-auto space-y-8">
-                <div class="text-center space-y-2">
-                    <h3 class="font-serif text-2xl font-bold uppercase">SOLICITUD DE ORACIÓN / CONFIRMACIÓN</h3>
-                    <p class="text-xs text-slate-500 uppercase tracking-widest font-sans">Queremos orar por ti antes del evento</p>
-                </div>
-
-                <!-- Caja de éxito oculta por defecto -->
-                <div id="success-box" class="hidden p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl text-center space-y-2 animate-fade-in">
-                    <span class="text-2xl">🙏</span>
-                    <h4 class="text-sm font-bold text-emerald-400 uppercase tracking-wider font-sans">Petición Registrada</h4>
-                    <p class="text-xs text-slate-400 font-sans">Tu intención y datos han sido entregados con éxito. ¡Estaremos orando por ti!</p>
-                </div>
-
-                <!-- Formulario configurado con action y method nativos para contingencia -->
-                <form id="prayer-form" action="https://formspree.io/f/mykvyzwp" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" id="form-name" name="name" placeholder="Tu Nombre" required 
-                               class="w-full bg-imperial-dark/60 border border-white/10 p-4 rounded-xl text-sm outline-none focus:border-imperial-gold text-white placeholder-slate-600 transition-all font-sans">
-                        <input type="email" id="form-email" name="email" placeholder="Tu Correo" required 
-                               class="w-full bg-imperial-dark/60 border border-white/10 p-4 rounded-xl text-sm outline-none focus:border-imperial-gold text-white placeholder-slate-600 transition-all font-sans">
-                    </div>
-                    <textarea id="form-request" name="message" placeholder="¿Cuál es tu petición de oración o necesidad espiritual?" required rows="4"
-                              class="w-full bg-imperial-dark/60 border border-white/10 p-4 rounded-xl text-sm outline-none focus:border-imperial-gold text-white placeholder-slate-600 transition-all resize-none font-sans"></textarea>
-                    
-                    <button type="submit" class="w-full py-4 bg-imperial-gold text-imperial-dark font-black text-xs tracking-widest uppercase rounded-xl hover:bg-yellow-400 transition-all shadow-xl shadow-imperial-gold/10 flex items-center justify-center gap-2 font-sans">
-                        <i class="fa-solid fa-paper-plane"></i> Enviar Petición
-                    </button>
-                </form>
-            </div>
-        </section>
-
-        <!-- SECCIÓN DE PREGUNTAS FRECUENTES (FAQ INTERACTIVO) -->
-        <section class="space-y-6">
+        <!-- VISTA 3: LISTA DE PREDICACIÓN (TABLA PREDICACIÓN DISTRITAL) -->
+        <div id="view-predicacion" class="hidden max-w-6xl mx-auto px-6 py-12 space-y-8 animate-fade-in">
             <div class="text-center space-y-2">
-                <h3 class="font-serif text-2xl font-bold">PREGUNTAS FRECUENTES</h3>
-                <p class="text-xs text-slate-500 uppercase tracking-widest font-sans">Todo lo que necesitas saber</p>
+                <span class="inline-block px-4 py-1.5 rounded-full border border-imperial-gold/30 bg-imperial-gold/10 text-imperial-gold text-xs font-black uppercase tracking-[0.3em] text-glow-gold">
+                    Organización Ministerial
+                </span>
+                <h2 class="font-serif text-3xl font-bold tracking-wide uppercase">Lista de Predicación Distrital</h2>
+                <p class="text-xs text-slate-400 max-w-xl mx-auto">Itinerario y asignación de temas distritales para las congregaciones del Distrito Chapinero</p>
+                <div class="h-1 w-16 bg-imperial-gold mx-auto rounded-full"></div>
             </div>
 
-            <div class="max-w-3xl mx-auto space-y-3">
-                <!-- FAQ Item 1 -->
-                <div class="bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer" onclick="toggleFaq(this)">
-                    <button class="w-full p-5 flex justify-between items-center text-left pointer-events-none font-sans">
-                        <span class="text-sm font-bold text-white">¿Puedo llevar personas que no asisten a ninguna iglesia?</span>
-                        <i class="fa-solid fa-chevron-down text-imperial-gold text-xs faq-icon transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content bg-black/20">
-                        <p class="p-5 pt-0 text-xs text-slate-400 leading-relaxed font-sans">
-                            ¡Por supuesto! El evento está diseñado especialmente para personas que buscan respuestas espirituales, sanidad interior y un nuevo comienzo con Dios. Todos son bienvenidos.
-                        </p>
-                    </div>
+            <!-- FILTROS Y BUSCADOR -->
+            <div class="glass p-6 rounded-2xl border border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex flex-wrap gap-2 justify-center w-full md:w-auto">
+                    <button onclick="filterTable('TODOS')" id="filter-btn-TODOS" class="px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black transition-all bg-imperial-gold text-imperial-dark">Todos</button>
+                    <button onclick="filterTable('MAYO')" id="filter-btn-MAYO" class="px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black transition-all text-slate-400 hover:text-white bg-white/5 border border-white/5">Mayo</button>
+                    <button onclick="filterTable('JUNIO')" id="filter-btn-JUNIO" class="px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black transition-all text-slate-400 hover:text-white bg-white/5 border border-white/5">Junio</button>
+                    <button onclick="filterTable('JULIO')" id="filter-btn-JULIO" class="px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black transition-all text-slate-400 hover:text-white bg-white/5 border border-white/5">Julio</button>
                 </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer" onclick="toggleFaq(this)">
-                    <button class="w-full p-5 flex justify-between items-center text-left pointer-events-none font-sans">
-                        <span class="text-sm font-bold text-white">¿Hay algún costo por asistir?</span>
-                        <i class="fa-solid fa-chevron-down text-imperial-gold text-xs faq-icon transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content bg-black/20">
-                        <p class="p-5 pt-0 text-xs text-slate-400 leading-relaxed font-sans">
-                            No, la entrada es 100% gratuita durante todos los días de la campaña.
-                        </p>
-                    </div>
+                <div class="relative w-full md:w-80">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
+                    <input type="text" id="preach-search" oninput="searchTable(this.value)" placeholder="Buscar predicador, tema o fecha..." 
+                           class="w-full bg-imperial-dark/60 border border-white/10 p-3 pl-10 rounded-xl text-xs outline-none focus:border-imperial-gold text-white placeholder-slate-600 transition-all font-sans">
                 </div>
             </div>
-        </section>
 
-    </main>
+            <!-- TABLA DE CONTROL DISTRITAL -->
+            <div class="glass rounded-3xl border border-white/5 overflow-hidden shadow-2xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-imperial-blue/40 border-b border-white/5 text-[10px] font-black uppercase tracking-wider text-slate-300">
+                                <th class="p-5 font-serif text-imperial-gold">MES / FECHA</th>
+                                <th class="p-5">TEMA</th>
+                                <th class="p-5">MODELIA</th>
+                                <th class="p-5">FILADELFIA</th>
+                                <th class="p-5">SAN MIGUEL</th>
+                                <th class="p-5">EL CAMINO</th>
+                            </tr>
+                        </thead>
+                        <tbody id="predicacion-tbody" class="divide-y divide-white/5 text-xs text-slate-300">
+                            <!-- Datos Inyectados por Script -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTA 4: PETICIONES (SOLICITUD DE ORACIÓN) -->
+        <div id="view-peticiones" class="hidden max-w-6xl mx-auto px-6 py-12 animate-fade-in">
+            <section class="bg-gradient-to-br from-slate-900 to-[#0b0f19] border border-white/5 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden max-w-2xl mx-auto shadow-2xl">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-imperial-gold/5 blur-3xl rounded-full"></div>
+                
+                <div class="relative z-10 space-y-8">
+                    <div class="text-center space-y-2">
+                        <h3 class="font-serif text-2xl font-bold uppercase">SOLICITUD DE ORACIÓN / CONFIRMACIÓN</h3>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest font-sans">Queremos orar por ti antes del evento</p>
+                    </div>
+
+                    <!-- Caja de éxito oculta por defecto -->
+                    <div id="success-box-peticiones" class="hidden p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl text-center space-y-2 animate-fade-in">
+                        <span class="text-2xl">🙏</span>
+                        <h4 class="text-sm font-bold text-emerald-400 uppercase tracking-wider font-sans">Petición Registrada</h4>
+                        <p class="text-xs text-slate-400 font-sans">Tu intención y datos han sido entregados con éxito. ¡Estaremos orando por ti!</p>
+                    </div>
+
+                    <form id="prayer-form-peticiones" action="https://formspree.io/f/mykvyzwp" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <input type="text" id="form-name-pet" name="name" placeholder="Tu Nombre" required 
+                                   class="w-full bg-imperial-dark/60 border border-white/10 p-4 rounded-xl text-sm outline-none focus:border-imperial-gold text-white placeholder-slate-600 transition-all font-sans">
+                            <input type="email" id="form-email-pet" name="email" placeholder="Tu Correo" required 
+                                   class="w-full bg-imperial-dark/60 border border-white/10 p-4 rounded-xl text-sm outline-none focus:border-imperial-gold text-white placeholder-slate-600 transition-all font-sans">
+                        </div>
+                        <textarea id="form-request-pet" name="message" placeholder="¿Cuál es tu petición de oración o necesidad espiritual?" required rows="4"
+                                  class="w-full bg-imperial-dark/60 border border-white/10 p-4 rounded-xl text-sm outline-none focus:border-imperial-gold text-white placeholder-slate-600 transition-all resize-none font-sans"></textarea>
+                        
+                        <button type="submit" class="w-full py-4 bg-imperial-gold text-imperial-dark font-black text-xs tracking-widest uppercase rounded-xl hover:bg-yellow-400 transition-all shadow-xl shadow-imperial-gold/10 flex items-center justify-center gap-2 font-sans">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar Petición
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+    </div>
 
     <!-- PIE DE PÁGINA (FOOTER) -->
     <footer class="bg-slate-950 border-t border-[#3d3326]/30 py-12 px-6 text-center text-slate-400 text-sm space-y-6">
         <div class="max-w-2xl mx-auto space-y-3">
             <p class="font-serif text-lg font-bold text-white tracking-widest uppercase">CONOCIENDO A TU CREADOR</p>
             <p class="text-xs text-slate-500 font-light leading-relaxed font-sans">
-                &copy; 2026 Gran Campaña de Restauración Espiritual. Todos los derechos reservados bajo la ley del Reino de Dios.
+                &copy; 2026 Distrito Chapinero — Gran Campaña de Restauración Espiritual. Todos los derechos reservados bajo la ley del Reino de Dios.
             </p>
         </div>
     </footer>
 
     <!-- LÓGICA DE INTERACTIVIDAD -->
     <script>
+        // --- DATA DE PREDICACIÓN (Basada fielmente en la imagen cargada) ---
+        const PREDICACIONES = [
+            // MAYO
+            { mes: 'MAYO', fecha: '2', tema: 'Familia', modelia: 'Pr. Ricardo Rodriguez', filadelfia: 'Pr. Brandon Vergara', sanmiguel: 'Alberto Moreno', elcamino: 'Filadelfia fin de campaña', especial: false },
+            { mes: 'MAYO', fecha: '9', tema: 'Evangelismo', modelia: 'Sergio Gomez', filadelfia: 'Andres Martinez', sanmiguel: 'Pr. Bladimir Alvarado', elcamino: 'Felipe Pinzon', especial: false },
+            { mes: 'MAYO', fecha: '16', tema: 'Mayordomía', modelia: 'DIA DEL AVENTURERO', filadelfia: 'DIA DEL AVENTURERO', sanmiguel: 'Miyer Montenegro', elcamino: 'DIA DEL AVENTURERO', especial: true, claseEspecial: 'bg-[#1d4ed8]/30 border-blue-500 text-blue-200' },
+            { mes: 'MAYO', fecha: '23', tema: 'Reavivamiento', modelia: 'Pr. Ricardo Rodriguez', filadelfia: 'Marcela Velasquez', sanmiguel: 'Baudelino Manjarrez', elcamino: 'Pr. Bladimir Alvarado', especial: false },
+            { mes: 'MAYO', fecha: '30', tema: 'Discipulado', modelia: 'Lili de Arias', filadelfia: 'Pr. Bladimir Alvarado', sanmiguel: 'Pablo Gongora', elcamino: 'Arqit. Jorge.', especial: false },
+            
+            // JUNIO
+            { mes: 'JUNIO', fecha: '6', tema: 'Familia', modelia: 'Pr. Bladimir Alvarado', filadelfia: 'Jorge Santodomingo', sanmiguel: 'William Martinez', elcamino: 'Roger Blanquiset', especial: false },
+            { mes: 'JUNIO', fecha: '13', tema: 'Evangelismo', modelia: 'DIA DEL MIN MUJER', filadelfia: 'DIA DEL MIN MUJER', sanmiguel: 'DIA DEL MIN MUJER', elcamino: 'DIA DEL MIN MUJER', especial: true, claseEspecial: 'bg-purple-900/40 border-purple-500 text-purple-200 font-bold' },
+            { mes: 'JUNIO', fecha: '20', tema: 'Mayordomía', modelia: 'Felipe Pinzon', filadelfia: 'Pr. Bladimir Alvarado', sanmiguel: 'Alberto Moreno', elcamino: 'Eilber Diaz', especial: false },
+            { mes: 'JUNIO', fecha: '27', tema: 'Reavivamiento', modelia: 'Pr. Arias', filadelfia: 'David Gordo', sanmiguel: 'Andres Rojas', elcamino: 'Robert Camacho', especial: false },
+            
+            // JULIO
+            { mes: 'JULIO', fecha: '4', tema: 'Familia', modelia: 'Marcela Velasquez', filadelfia: 'Andres Jimenez', sanmiguel: 'Jorge Santodomingo', elcamino: 'Roger Blanquiset', especial: false },
+            { mes: 'JULIO', fecha: '11', tema: 'Evangelismo', modelia: 'Pr. Ricardo Rodriguez', filadelfia: 'Marcela Velasquez', sanmiguel: 'Miyer Montenegro', elcamino: 'Mauricio Lemus', especial: false },
+            { mes: 'JULIO', fecha: '18', tema: 'Mayordomía', modelia: 'Harold Sanchez', filadelfia: 'Antonio Hurtado', sanmiguel: 'David Gordo', elcamino: 'Felipe Pinzon', especial: false },
+            { mes: 'JULIO', fecha: '25', tema: 'Reavivamiento', modelia: 'Mauricio Lemus', filadelfia: 'Oscar Gutierrez', sanmiguel: 'Alberto Moreno', elcamino: 'Pr. Ricardo Rodriguez', especial: false }
+        ];
+
+        // --- MANEJO DE VISTAS (SPA) ---
+        const switchView = (viewName) => {
+            // Ocultar todas las vistas
+            ['inicio', 'campana', 'predicacion', 'peticiones'].forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                const nav = document.getElementById(`nav-${v}`);
+                if (el) el.classList.add('hidden');
+                if (nav) nav.className = "px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black text-slate-400 hover:text-imperial-gold hover:bg-white/5 transition-all";
+            });
+
+            // Mostrar vista seleccionada
+            const elToSelect = document.getElementById(`view-${viewName}`);
+            const navToSelect = document.getElementById(`nav-${viewName}`);
+            if (elToSelect) elToSelect.classList.remove('hidden');
+            if (navToSelect) navToSelect.className = "px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black text-imperial-gold bg-white/5 border border-imperial-gold/20 transition-all";
+        };
+
         // --- 1. CONFIGURACIÓN DEL COUNTDOWN ---
-        // Se establece la fecha de inicio oficial: 13 de Junio de 2026 a las 7:00 PM (19:00)
         const targetDate = new Date("June 13, 2026 19:00:00").getTime();
 
         const updateCountdown = () => {
@@ -375,73 +561,98 @@
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                document.getElementById('days').innerText = days.toString().padStart(2, '0');
-                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+                const formattedDays = days.toString().padStart(2, '0');
+                const formattedHours = hours.toString().padStart(2, '0');
+                const formattedMins = minutes.toString().padStart(2, '0');
+                const formattedSecs = seconds.toString().padStart(2, '0');
+
+                // Hero Countdown (Seguro ante la ausencia de elementos con guardas de nulidad)
+                const daysEl = document.getElementById('days');
+                const hoursEl = document.getElementById('hours');
+                const minutesEl = document.getElementById('minutes');
+                const secondsEl = document.getElementById('seconds');
+
+                if (daysEl) daysEl.innerText = formattedDays;
+                if (hoursEl) hoursEl.innerText = formattedHours;
+                if (minutesEl) minutesEl.innerText = formattedMins;
+                if (secondsEl) secondsEl.innerText = formattedSecs;
+
+                // Mini Countdown (Inicio)
+                const daysMini = document.getElementById('days-mini');
+                const hoursMini = document.getElementById('hours-mini');
+                const minsMini = document.getElementById('mins-mini');
+
+                if (daysMini) daysMini.innerText = formattedDays;
+                if (hoursMini) hoursMini.innerText = formattedHours;
+                if (minsMini) minsMini.innerText = formattedMins;
             } else {
-                document.getElementById('days').innerText = "00";
-                document.getElementById('hours').innerText = "00";
-                document.getElementById('minutes').innerText = "00";
-                document.getElementById('seconds').innerText = "00";
+                const zero = "00";
+                const daysEl = document.getElementById('days');
+                const hoursEl = document.getElementById('hours');
+                const minutesEl = document.getElementById('minutes');
+                const secondsEl = document.getElementById('seconds');
+
+                if (daysEl) daysEl.innerText = zero;
+                if (hoursEl) hoursEl.innerText = zero;
+                if (minutesEl) minutesEl.innerText = zero;
+                if (secondsEl) secondsEl.innerText = zero;
+                
+                const daysMini = document.getElementById('days-mini');
+                const hoursMini = document.getElementById('hours-mini');
+                const minsMini = document.getElementById('mins-mini');
+
+                if (daysMini) daysMini.innerText = zero;
+                if (hoursMini) hoursMini.innerText = zero;
+                if (minsMini) minsMini.innerText = zero;
             }
         };
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // --- 2. GESTIÓN DEL FORMULARIO Y DESTINO DE DATOS ---
+        // --- 2. GESTIÓN DEL FORMULARIO Formspree ---
         // Se ha enlazado con éxito tu identificador de Formspree: mykvyzwp
         const FORMSPREE_ID = "mykvyzwp"; 
 
         const handleFormSubmit = (event) => {
             event.preventDefault();
-            const name = document.getElementById('form-name').value;
-            const email = document.getElementById('form-email').value;
-            const request = document.getElementById('form-request').value;
+            const name = document.getElementById('form-name-pet').value;
+            const email = document.getElementById('form-email-pet').value;
+            const request = document.getElementById('form-request-pet').value;
 
-            const form = document.getElementById('prayer-form');
-            const successBox = document.getElementById('success-box');
+            const form = document.getElementById('prayer-form-peticiones');
+            const successBox = document.getElementById('success-box-peticiones');
 
-            // Añadir estado de carga visual en el botón
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Enviando...';
             submitBtn.disabled = true;
 
-            if (FORMSPREE_ID && FORMSPREE_ID !== "FORM_ID") {
-                // Envío real optimizado utilizando FormData para asegurar compatibilidad de campos con Formspree
-                const formData = new FormData();
-                formData.append('name', name);
-                formData.append('email', email);
-                formData.append('message', request);
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('message', request);
 
-                fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        mostrarExito();
-                    } else {
-                        alert("Hubo un problema al enviar la petición. Por favor, asegúrate de que el ID de Formspree esté activo.");
-                        restaurarBoton();
-                    }
-                })
-                .catch(error => {
-                    console.error("Error de envío:", error);
-                    alert("Error de conexión. Inténtalo de nuevo más tarde.");
-                    restaurarBoton();
-                });
-            } else {
-                // Simulación local de respaldo si no se ha configurado el ID de Formspree aún
-                setTimeout(() => {
+            fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
                     mostrarExito();
-                }, 1000);
-            }
+                } else {
+                    alert("Problema con Formspree. Por favor verifique que su cuenta está activa.");
+                    restaurarBoton();
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error de conexión. Vuelva a intentarlo.");
+                restaurarBoton();
+            });
 
             function mostrarExito() {
                 form.reset();
@@ -461,7 +672,90 @@
             }
         };
 
-        // --- 3. ACORDEÓN DE PREGUNTAS FRECUENTES ---
+        // --- 3. RENDERING & FILTROS DE TABLA DE PREDICACIÓN ---
+        let currentFilter = 'TODOS';
+        let searchQuery = '';
+
+        const filterTable = (mes) => {
+            currentFilter = mes;
+            // Actualizar botones de filtro
+            ['TODOS', 'MAYO', 'JUNIO', 'JULIO'].forEach(m => {
+                const btn = document.getElementById(`filter-btn-${m}`);
+                if (btn) {
+                    if (m === mes) {
+                        btn.className = "px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black transition-all bg-imperial-gold text-imperial-dark shadow-lg shadow-imperial-gold/10";
+                    } else {
+                        btn.className = "px-4 py-2 rounded-xl text-xs uppercase tracking-widest font-black transition-all text-slate-400 hover:text-white bg-white/5 border border-white/5";
+                    }
+                }
+            });
+            renderTable();
+        };
+
+        const searchTable = (q) => {
+            searchQuery = q.toLowerCase();
+            renderTable();
+        };
+
+        const renderTable = () => {
+            const tbody = document.getElementById('predicacion-tbody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            const filtered = PREDICACIONES.filter(p => {
+                const matchesFilter = (currentFilter === 'TODOS' || p.mes === currentFilter);
+                
+                const matchesSearch = (
+                    p.fecha.toLowerCase().includes(searchQuery) ||
+                    p.tema.toLowerCase().includes(searchQuery) ||
+                    p.modelia.toLowerCase().includes(searchQuery) ||
+                    p.filadelfia.toLowerCase().includes(searchQuery) ||
+                    p.sanmiguel.toLowerCase().includes(searchQuery) ||
+                    p.elcamino.toLowerCase().includes(searchQuery) ||
+                    p.mes.toLowerCase().includes(searchQuery)
+                );
+
+                return matchesFilter && matchesSearch;
+            });
+
+            filtered.forEach(p => {
+                const tr = document.createElement('tr');
+                tr.className = p.especial 
+                    ? `${p.claseEspecial} border-b border-white/5 font-bold`
+                    : "hover:bg-white/5 border-b border-white/5 transition-colors";
+                
+                // Resaltar predicador principal para facilidad de lectura
+                const checkHighlight = (name) => {
+                    if (name.includes('Pr. Bladimir Alvarado')) {
+                        return `<span class="bg-[#d97706]/20 text-imperial-gold px-2 py-0.5 rounded border border-[#ca8a04]/30 font-bold">${name}</span>`;
+                    }
+                    return name;
+                };
+
+                tr.innerHTML = `
+                    <td class="p-4 font-bold border-r border-white/5">${p.mes} ${p.fecha}</td>
+                    <td class="p-4 border-r border-white/5 font-semibold text-slate-200">${p.tema}</td>
+                    <td class="p-4 border-r border-white/5">${checkHighlight(p.modelia)}</td>
+                    <td class="p-4 border-r border-white/5">${checkHighlight(p.filadelfia)}</td>
+                    <td class="p-4 border-r border-white/5">${checkHighlight(p.sanmiguel)}</td>
+                    <td class="p-4">${checkHighlight(p.elcamino)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="p-8 text-center text-slate-500 italic">No se encontraron predicaciones programadas para la búsqueda.</td>
+                    </tr>
+                `;
+            }
+        };
+
+        // Inicializar tabla al cargar
+        renderTable();
+
+        // --- 4. ACORDEÓN DE PREGUNTAS FRECUENTES ---
         const toggleFaq = (element) => {
             const isActive = element.classList.contains('faq-active');
             
